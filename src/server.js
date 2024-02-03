@@ -1,15 +1,22 @@
 require("express-async-errors")
 const AppError = require("./utils/AppError")
+const migrationsRun = require("./database/sqlite/migrations")
+const uploadoConfig = require("./configs/upload")
 
 
 const express = require("express");
 
 const routes = require("./routes/index.js")
 
+migrationsRun();
+
 const app = express();
 app.use(express.json());
 
+app.use("/files", express.static(uploadoConfig.UPLOADS_FOLDER))
+
 app.use(routes);
+
 
 app.use((error, req, res, next) => {
     if(error instanceof AppError) {
@@ -28,4 +35,4 @@ app.use((error, req, res, next) => {
 })
 
 const PORT = 3333;
-app.listen(PORT, () => console.log(`Serve is running on Port ${PORT}`));
+app.listen(PORT, () => console.log(`Serve is running on Port ${PORT}`)); 
