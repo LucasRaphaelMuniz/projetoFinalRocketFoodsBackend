@@ -50,7 +50,8 @@ class FoodsController{
 
     async update(req, res){
         const { id } = req.params;
-        const { nome, categoria, ingredientes, preco, descricacao } = req.body
+        const user_id  = req.user.id;
+        const { nome, categoria, ingredientes, preco, descricacao, imagem } = req.body
 
         const foods = await knex("foods").where({ id })
 
@@ -64,6 +65,7 @@ class FoodsController{
             categoria: categoria ?? foods.categoria,
             preco: preco ?? foods.preco,
             descricao: descricacao ?? foods.descricacao,
+            imagem: imagem ?? foods.imagem,
             updated_at:knex.fn.now(),
         }
 
@@ -75,6 +77,7 @@ class FoodsController{
             const ingredientesNovos = ingredientes.map((ingredientes) => {
                 return{
                     food_id: id,
+                    user_id,
                     ingredientes,
 
                 }

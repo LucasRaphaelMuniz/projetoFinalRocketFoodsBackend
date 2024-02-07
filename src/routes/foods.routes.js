@@ -22,7 +22,7 @@ foodsRoutes.get("/", foodsController.index)
 foodsRoutes.post("/", ensureAuthenticated, foodsController.create)
 foodsRoutes.get("/:id", foodsController.show)
 foodsRoutes.delete("/:id", foodsController.delete)
-foodsRoutes.put("/:id", foodsController.update)
+foodsRoutes.put("/editarprato/:id", foodsController.update)
 
 foodsRoutes.patch("/imagem/:id", ensureAuthenticated, upload.single("imagem"), foodImagemController.update)
 
