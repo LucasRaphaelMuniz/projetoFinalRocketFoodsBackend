@@ -28,17 +28,3 @@ foodsRoutes.patch("/imagem/:id", ensureAuthenticated, upload.single("imagem"), f
 
 module.exports = foodsRoutes;
 
-
-// function myMiddleware(req, res, next){
-//     console.log("passou pelo midd");
-
-//     if(!req.body.isAdmin) {
-//         return res.json({message: "nao autorizado"})
-//     }
-
-//     next();
-// }
-
-
-//  foodsRoutes.post("/:user_id", myMiddleware, foodsController.create)
-
