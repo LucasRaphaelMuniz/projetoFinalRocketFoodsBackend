@@ -90,69 +90,6 @@ class FoodsController{
 
     }
 
-    // async index(req, res) {
-    //     const { nome, ingredientes } = req.query;
-    
-    //     let foods;
-    
-    //     if (ingredientes) {
-    //         const filterIngredientes = ingredientes.split(',').map(ingrediente => ingrediente.trim());
-    
-    //         foods = await knex("ingredientes")
-    //             .select([
-    //                 "foods.id",
-    //                 "foods.nome"
-    //             ])
-    //             .where(builder => {
-    //                 builder.where("ingredientes", "like", `%${ingredientes}%`)
-    //                     .orWhere(qb => {
-    //                         filterIngredientes.forEach(ingrediente => {
-    //                             qb.orWhere("ingredientes", "like", `%${ingrediente}%`);
-    //                         });
-    //                     });
-    //             })
-    //             .innerJoin("foods", "foods.id", "ingredientes.food_id")
-    //             .orderBy("foods.nome");
-
-    //     } else {
-    //         foods = await knex("foods")
-    //             .where("nome", "like", `%${nome}%`)
-    //             .orderBy("nome");
-    //     }
-    
-    //     return res.json(foods);
-    // }
-
-    // async index(req, res) {
-    //     const { search } = req.query;
-    
-    //     let foods;
-    
-    //     // Primeiro, tentamos pesquisar por nome
-    //     foods = await knex("foods")
-    //         .where("nome", "like", `%${search}%`)
-    //         .orderBy("nome");
-    
-    //     // Se não houver resultados, tentamos pesquisar por ingredientes
-    //     if (foods.length === 0) {
-    //         // Realize a lógica de pesquisa por ingredientes aqui
-    //         // Por exemplo:
-    //         foods = await knex("foods")
-    //             .select([
-    //                 "foods.id",
-    //                 "foods.nome"
-    //             ])
-    //             .whereIn("foods.id", function() {
-    //                 this.select("food_id")
-    //                     .from("ingredientes")
-    //                     .where("ingredientes", "like", `%${search}%`);
-    //             })
-    //             .orderBy("foods.nome");
-    //     }
-    
-    //     return res.json(foods);
-    // }
-
     async index(req, res) {
         const { search } = req.query;
         let foods;
