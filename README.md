@@ -13,7 +13,7 @@ O Food Explorer é uma aplicação completa que integra front-end e back-end. Ut
 #### Deploy:
 **Link Deploy**: https://main--foodexplorermuniz.netlify.app/
 
-**Login ADM:** user@email.com ; **senha:** 123
+**Login ADM:** admin@email.com ; **senha:** 123
 
 **Login User:** user@email.com ; **senha:** 123
 
